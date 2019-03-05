@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jheinnic/ptf-node-proto-paint.gateway"
+    "url": "https://github.com/jheinnic/ptf-node-proto-paint.gateway.git"
   },
   "keywords": [
     "grpc",
