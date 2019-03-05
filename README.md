@@ -1,1 +1,1 @@
-# protorepo-paint-gateway-ts
+# ptf-node-proto-paint.gateway
