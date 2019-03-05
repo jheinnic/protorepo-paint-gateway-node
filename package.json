@@ -1,15 +1,19 @@
 {
   "name": "@jchgrpc/paint-gateway-node",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "GRPC Service Stubs on Backend NodeJS for Paint Gateway microservice",
   "main": "./lib/proto_grpc_pb.js",
   "types": "./lib/proto_grpc_pb.d.ts",
   "scripts": {
     "test": "echo 'Paint Gateway'"
   },
+  "files": [
+    "proto.proto",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jheinnic/ptf-node-proto-paint.gateway"
+    "url": "https://github.com/jheinnic/ptf-node-proto-paint.gateway.git"
   },
   "keywords": [
     "grpc",
@@ -23,9 +27,9 @@
   "author": "John Heinnickel <jheinnic@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jheinnic/protorepo-paint-gateway-ts/issues"
+    "url": "https://github.com/jheinnic/ptf-node-proto-paint.gateway/issues"
   },
-  "homepage": "https://github.com/jheinnic/protorepo-paint-gateway-ts#readme",
+  "homepage": "https://github.com/jheinnic/ptf-node-proto-paint.gateway#readme"
   "dependencies": {
     "@grpc/proto-loader": "0.3.0",
     "debug": "3.2.6",
