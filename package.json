@@ -8,8 +8,14 @@
     "test": "echo 'Paint Gateway'"
   },
   "files": [
+    "package.json",
+    "yarn.lock",
     "proto.proto",
-    "README.md"
+    "README.md",
+    "lib/proto_grpc_pb.d.ts",
+    "lib/proto_pb.d.ts",
+    "lib/proto_grpc_pb.js",
+    "lib/proto_pb.js"
   ],
   "repository": {
     "type": "git",
