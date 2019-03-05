@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/jheinnic/ptf-node-proto-paint.gateway/issues"
   },
-  "homepage": "https://github.com/jheinnic/ptf-node-proto-paint.gateway#readme"
+  "homepage": "https://github.com/jheinnic/ptf-node-proto-paint.gateway#readme",
   "dependencies": {
     "@grpc/proto-loader": "0.3.0",
     "debug": "3.2.6",
