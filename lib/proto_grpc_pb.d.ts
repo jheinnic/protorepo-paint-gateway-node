@@ -1,4 +1,4 @@
-// package: name.jchein.portfolio.random_art
+// package: name.jchein.portfolio.services.paint.gateway
 // file: proto.proto
 
 /* tslint:disable */
@@ -7,99 +7,98 @@ import * as grpc from "grpc";
 import * as proto_pb from "./proto_pb";
 
 interface IPaintGatewayService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    createPaintArtworkTasks: IPaintGatewayService_IcreatePaintArtworkTasks;
-    createPaintArtworkTask: IPaintGatewayService_IcreatePaintArtworkTask;
-    cancelPaintArtworkTasks: IPaintGatewayService_IcancelPaintArtworkTasks;
-    cancelPaintArtworkTask: IPaintGatewayService_IcancelPaintArtworkTask;
-    reportTaskState: IPaintGatewayService_IreportTaskState;
+    create: IPaintGatewayService_Icreate;
+    createAndMonitor: IPaintGatewayService_IcreateAndMonitor;
+    monitor: IPaintGatewayService_Imonitor;
+    acknowledge: IPaintGatewayService_Iacknowledge;
+    cancel: IPaintGatewayService_Icancel;
 }
 
-interface IPaintGatewayService_IcreatePaintArtworkTasks extends grpc.MethodDefinition<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived> {
-    path: string; // "/name.jchein.portfolio.random_art.PaintGateway/createPaintArtworkTasks"
-    requestStream: boolean; // true
-    responseStream: boolean; // true
-    requestSerialize: grpc.serialize<proto_pb.CreatePaintArtworkTask>;
-    requestDeserialize: grpc.deserialize<proto_pb.CreatePaintArtworkTask>;
-    responseSerialize: grpc.serialize<proto_pb.CommandReceived>;
-    responseDeserialize: grpc.deserialize<proto_pb.CommandReceived>;
-}
-interface IPaintGatewayService_IcreatePaintArtworkTask extends grpc.MethodDefinition<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived> {
-    path: string; // "/name.jchein.portfolio.random_art.PaintGateway/createPaintArtworkTask"
+interface IPaintGatewayService_Icreate extends grpc.MethodDefinition<proto_pb.CreatePaintArtworkTask, proto_pb.RequestReceived> {
+    path: string; // "/name.jchein.portfolio.services.paint.gateway.PaintGateway/create"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<proto_pb.CreatePaintArtworkTask>;
     requestDeserialize: grpc.deserialize<proto_pb.CreatePaintArtworkTask>;
-    responseSerialize: grpc.serialize<proto_pb.CommandReceived>;
-    responseDeserialize: grpc.deserialize<proto_pb.CommandReceived>;
+    responseSerialize: grpc.serialize<proto_pb.RequestReceived>;
+    responseDeserialize: grpc.deserialize<proto_pb.RequestReceived>;
 }
-interface IPaintGatewayService_IcancelPaintArtworkTasks extends grpc.MethodDefinition<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived> {
-    path: string; // "/name.jchein.portfolio.random_art.PaintGateway/cancelPaintArtworkTasks"
-    requestStream: boolean; // true
+interface IPaintGatewayService_IcreateAndMonitor extends grpc.MethodDefinition<proto_pb.CreatePaintArtworkTask, proto_pb.ArtworkTaskProgressEvent> {
+    path: string; // "/name.jchein.portfolio.services.paint.gateway.PaintGateway/createAndMonitor"
+    requestStream: boolean; // false
     responseStream: boolean; // true
-    requestSerialize: grpc.serialize<proto_pb.CancelPaintArtworkTask>;
-    requestDeserialize: grpc.deserialize<proto_pb.CancelPaintArtworkTask>;
-    responseSerialize: grpc.serialize<proto_pb.CommandReceived>;
-    responseDeserialize: grpc.deserialize<proto_pb.CommandReceived>;
+    requestSerialize: grpc.serialize<proto_pb.CreatePaintArtworkTask>;
+    requestDeserialize: grpc.deserialize<proto_pb.CreatePaintArtworkTask>;
+    responseSerialize: grpc.serialize<proto_pb.ArtworkTaskProgressEvent>;
+    responseDeserialize: grpc.deserialize<proto_pb.ArtworkTaskProgressEvent>;
 }
-interface IPaintGatewayService_IcancelPaintArtworkTask extends grpc.MethodDefinition<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived> {
-    path: string; // "/name.jchein.portfolio.random_art.PaintGateway/cancelPaintArtworkTask"
+interface IPaintGatewayService_Imonitor extends grpc.MethodDefinition<proto_pb.MonitorPaintArtworkTask, proto_pb.ArtworkTaskProgressEvent> {
+    path: string; // "/name.jchein.portfolio.services.paint.gateway.PaintGateway/monitor"
+    requestStream: boolean; // false
+    responseStream: boolean; // true
+    requestSerialize: grpc.serialize<proto_pb.MonitorPaintArtworkTask>;
+    requestDeserialize: grpc.deserialize<proto_pb.MonitorPaintArtworkTask>;
+    responseSerialize: grpc.serialize<proto_pb.ArtworkTaskProgressEvent>;
+    responseDeserialize: grpc.deserialize<proto_pb.ArtworkTaskProgressEvent>;
+}
+interface IPaintGatewayService_Iacknowledge extends grpc.MethodDefinition<proto_pb.CancelPaintArtworkTask, proto_pb.RequestReceived> {
+    path: string; // "/name.jchein.portfolio.services.paint.gateway.PaintGateway/acknowledge"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<proto_pb.CancelPaintArtworkTask>;
     requestDeserialize: grpc.deserialize<proto_pb.CancelPaintArtworkTask>;
-    responseSerialize: grpc.serialize<proto_pb.CommandReceived>;
-    responseDeserialize: grpc.deserialize<proto_pb.CommandReceived>;
+    responseSerialize: grpc.serialize<proto_pb.RequestReceived>;
+    responseDeserialize: grpc.deserialize<proto_pb.RequestReceived>;
 }
-interface IPaintGatewayService_IreportTaskState extends grpc.MethodDefinition<proto_pb.UpdatePaintArtworkTask, proto_pb.CommandReceived> {
-    path: string; // "/name.jchein.portfolio.random_art.PaintGateway/reportTaskState"
-    requestStream: boolean; // true
-    responseStream: boolean; // true
-    requestSerialize: grpc.serialize<proto_pb.UpdatePaintArtworkTask>;
-    requestDeserialize: grpc.deserialize<proto_pb.UpdatePaintArtworkTask>;
-    responseSerialize: grpc.serialize<proto_pb.CommandReceived>;
-    responseDeserialize: grpc.deserialize<proto_pb.CommandReceived>;
+interface IPaintGatewayService_Icancel extends grpc.MethodDefinition<proto_pb.CancelPaintArtworkTask, proto_pb.RequestReceived> {
+    path: string; // "/name.jchein.portfolio.services.paint.gateway.PaintGateway/cancel"
+    requestStream: boolean; // false
+    responseStream: boolean; // false
+    requestSerialize: grpc.serialize<proto_pb.CancelPaintArtworkTask>;
+    requestDeserialize: grpc.deserialize<proto_pb.CancelPaintArtworkTask>;
+    responseSerialize: grpc.serialize<proto_pb.RequestReceived>;
+    responseDeserialize: grpc.deserialize<proto_pb.RequestReceived>;
 }
 
 export const PaintGatewayService: IPaintGatewayService;
 
 export interface IPaintGatewayServer {
-    createPaintArtworkTasks: grpc.handleBidiStreamingCall<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived>;
-    createPaintArtworkTask: grpc.handleUnaryCall<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived>;
-    cancelPaintArtworkTasks: grpc.handleBidiStreamingCall<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived>;
-    cancelPaintArtworkTask: grpc.handleUnaryCall<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived>;
-    reportTaskState: grpc.handleBidiStreamingCall<proto_pb.UpdatePaintArtworkTask, proto_pb.CommandReceived>;
+    create: grpc.handleUnaryCall<proto_pb.CreatePaintArtworkTask, proto_pb.RequestReceived>;
+    createAndMonitor: grpc.handleServerStreamingCall<proto_pb.CreatePaintArtworkTask, proto_pb.ArtworkTaskProgressEvent>;
+    monitor: grpc.handleServerStreamingCall<proto_pb.MonitorPaintArtworkTask, proto_pb.ArtworkTaskProgressEvent>;
+    acknowledge: grpc.handleUnaryCall<proto_pb.CancelPaintArtworkTask, proto_pb.RequestReceived>;
+    cancel: grpc.handleUnaryCall<proto_pb.CancelPaintArtworkTask, proto_pb.RequestReceived>;
 }
 
 export interface IPaintGatewayClient {
-    createPaintArtworkTasks(): grpc.ClientDuplexStream<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived>;
-    createPaintArtworkTasks(options: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived>;
-    createPaintArtworkTasks(metadata: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived>;
-    createPaintArtworkTask(request: proto_pb.CreatePaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    createPaintArtworkTask(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    createPaintArtworkTask(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    cancelPaintArtworkTasks(): grpc.ClientDuplexStream<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived>;
-    cancelPaintArtworkTasks(options: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived>;
-    cancelPaintArtworkTasks(metadata: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived>;
-    cancelPaintArtworkTask(request: proto_pb.CancelPaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    cancelPaintArtworkTask(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    cancelPaintArtworkTask(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    reportTaskState(): grpc.ClientDuplexStream<proto_pb.UpdatePaintArtworkTask, proto_pb.CommandReceived>;
-    reportTaskState(options: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.UpdatePaintArtworkTask, proto_pb.CommandReceived>;
-    reportTaskState(metadata: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.UpdatePaintArtworkTask, proto_pb.CommandReceived>;
+    create(request: proto_pb.CreatePaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    create(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    create(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    createAndMonitor(request: proto_pb.CreatePaintArtworkTask, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    createAndMonitor(request: proto_pb.CreatePaintArtworkTask, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    monitor(request: proto_pb.MonitorPaintArtworkTask, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    monitor(request: proto_pb.MonitorPaintArtworkTask, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    acknowledge(request: proto_pb.CancelPaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    acknowledge(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    acknowledge(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    cancel(request: proto_pb.CancelPaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    cancel(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    cancel(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
 }
 
 export class PaintGatewayClient extends grpc.Client implements IPaintGatewayClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public createPaintArtworkTasks(options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived>;
-    public createPaintArtworkTasks(metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CreatePaintArtworkTask, proto_pb.CommandReceived>;
-    public createPaintArtworkTask(request: proto_pb.CreatePaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    public createPaintArtworkTask(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    public createPaintArtworkTask(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    public cancelPaintArtworkTasks(options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived>;
-    public cancelPaintArtworkTasks(metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.CancelPaintArtworkTask, proto_pb.CommandReceived>;
-    public cancelPaintArtworkTask(request: proto_pb.CancelPaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    public cancelPaintArtworkTask(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    public cancelPaintArtworkTask(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.CommandReceived) => void): grpc.ClientUnaryCall;
-    public reportTaskState(options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.UpdatePaintArtworkTask, proto_pb.CommandReceived>;
-    public reportTaskState(metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<proto_pb.UpdatePaintArtworkTask, proto_pb.CommandReceived>;
+    public create(request: proto_pb.CreatePaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public create(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public create(request: proto_pb.CreatePaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public createAndMonitor(request: proto_pb.CreatePaintArtworkTask, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    public createAndMonitor(request: proto_pb.CreatePaintArtworkTask, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    public monitor(request: proto_pb.MonitorPaintArtworkTask, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    public monitor(request: proto_pb.MonitorPaintArtworkTask, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<proto_pb.ArtworkTaskProgressEvent>;
+    public acknowledge(request: proto_pb.CancelPaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public acknowledge(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public acknowledge(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public cancel(request: proto_pb.CancelPaintArtworkTask, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public cancel(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
+    public cancel(request: proto_pb.CancelPaintArtworkTask, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: proto_pb.RequestReceived) => void): grpc.ClientUnaryCall;
 }

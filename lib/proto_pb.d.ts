@@ -1,4 +1,4 @@
-// package: name.jchein.portfolio.random_art
+// package: name.jchein.portfolio.services.paint.gateway
 // file: proto.proto
 
 /* tslint:disable */
@@ -6,9 +6,6 @@
 import * as jspb from "google-protobuf";
 
 export class CreatePaintArtworkTask extends jspb.Message { 
-    getId(): string;
-    setId(value: string): void;
-
     getSeedprefix(): string;
     setSeedprefix(value: string): void;
 
@@ -21,8 +18,11 @@ export class CreatePaintArtworkTask extends jspb.Message {
     getRenderpolicy(): string;
     setRenderpolicy(value: string): void;
 
-    getStagingpolicy(): string;
-    setStagingpolicy(value: string): void;
+    getStoragepolicy(): string;
+    setStoragepolicy(value: string): void;
+
+    getAutoack(): boolean;
+    setAutoack(value: boolean): void;
 
 
     serializeBinary(): Uint8Array;
@@ -37,12 +37,37 @@ export class CreatePaintArtworkTask extends jspb.Message {
 
 export namespace CreatePaintArtworkTask {
     export type AsObject = {
-        id: string,
         seedprefix: string,
         seedsuffix: string,
         newmodel: boolean,
         renderpolicy: string,
-        stagingpolicy: string,
+        storagepolicy: string,
+        autoack: boolean,
+    }
+}
+
+export class MonitorPaintArtworkTask extends jspb.Message { 
+    getId(): string;
+    setId(value: string): void;
+
+    getAutoack(): boolean;
+    setAutoack(value: boolean): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MonitorPaintArtworkTask.AsObject;
+    static toObject(includeInstance: boolean, msg: MonitorPaintArtworkTask): MonitorPaintArtworkTask.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MonitorPaintArtworkTask, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MonitorPaintArtworkTask;
+    static deserializeBinaryFromReader(message: MonitorPaintArtworkTask, reader: jspb.BinaryReader): MonitorPaintArtworkTask;
+}
+
+export namespace MonitorPaintArtworkTask {
+    export type AsObject = {
+        id: string,
+        autoack: boolean,
     }
 }
 
@@ -50,8 +75,8 @@ export class CancelPaintArtworkTask extends jspb.Message {
     getId(): string;
     setId(value: string): void;
 
-    getSeq(): number;
-    setSeq(value: number): void;
+    getAutoack(): boolean;
+    setAutoack(value: boolean): void;
 
 
     serializeBinary(): Uint8Array;
@@ -67,91 +92,13 @@ export class CancelPaintArtworkTask extends jspb.Message {
 export namespace CancelPaintArtworkTask {
     export type AsObject = {
         id: string,
-        seq: number,
-    }
-}
-
-export class SuspendPaintArtworkTask extends jspb.Message { 
-    getId(): string;
-    setId(value: string): void;
-
-    getSeq(): number;
-    setSeq(value: number): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SuspendPaintArtworkTask.AsObject;
-    static toObject(includeInstance: boolean, msg: SuspendPaintArtworkTask): SuspendPaintArtworkTask.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SuspendPaintArtworkTask, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SuspendPaintArtworkTask;
-    static deserializeBinaryFromReader(message: SuspendPaintArtworkTask, reader: jspb.BinaryReader): SuspendPaintArtworkTask;
-}
-
-export namespace SuspendPaintArtworkTask {
-    export type AsObject = {
-        id: string,
-        seq: number,
-    }
-}
-
-export class ResumePaintArtworkTask extends jspb.Message { 
-    getId(): string;
-    setId(value: string): void;
-
-    getSeq(): number;
-    setSeq(value: number): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): ResumePaintArtworkTask.AsObject;
-    static toObject(includeInstance: boolean, msg: ResumePaintArtworkTask): ResumePaintArtworkTask.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: ResumePaintArtworkTask, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): ResumePaintArtworkTask;
-    static deserializeBinaryFromReader(message: ResumePaintArtworkTask, reader: jspb.BinaryReader): ResumePaintArtworkTask;
-}
-
-export namespace ResumePaintArtworkTask {
-    export type AsObject = {
-        id: string,
-        seq: number,
-    }
-}
-
-export class RetryPaintArtworkTask extends jspb.Message { 
-    getId(): string;
-    setId(value: string): void;
-
-    getSeq(): number;
-    setSeq(value: number): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RetryPaintArtworkTask.AsObject;
-    static toObject(includeInstance: boolean, msg: RetryPaintArtworkTask): RetryPaintArtworkTask.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RetryPaintArtworkTask, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RetryPaintArtworkTask;
-    static deserializeBinaryFromReader(message: RetryPaintArtworkTask, reader: jspb.BinaryReader): RetryPaintArtworkTask;
-}
-
-export namespace RetryPaintArtworkTask {
-    export type AsObject = {
-        id: string,
-        seq: number,
+        autoack: boolean,
     }
 }
 
 export class AcknowledgePaintArtworkTask extends jspb.Message { 
     getId(): string;
     setId(value: string): void;
-
-    getSeq(): number;
-    setSeq(value: number): void;
 
 
     serializeBinary(): Uint8Array;
@@ -167,186 +114,69 @@ export class AcknowledgePaintArtworkTask extends jspb.Message {
 export namespace AcknowledgePaintArtworkTask {
     export type AsObject = {
         id: string,
-        seq: number,
     }
 }
 
-export class CommandReceived extends jspb.Message { 
+export class RequestReceived extends jspb.Message { 
     getId(): string;
     setId(value: string): void;
 
-    getSeq(): number;
-    setSeq(value: number): void;
-
-    getType(): string;
-    setType(value: string): void;
-
-    getAccepted(): boolean;
-    setAccepted(value: boolean): void;
-
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): CommandReceived.AsObject;
-    static toObject(includeInstance: boolean, msg: CommandReceived): CommandReceived.AsObject;
+    toObject(includeInstance?: boolean): RequestReceived.AsObject;
+    static toObject(includeInstance: boolean, msg: RequestReceived): RequestReceived.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: CommandReceived, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): CommandReceived;
-    static deserializeBinaryFromReader(message: CommandReceived, reader: jspb.BinaryReader): CommandReceived;
+    static serializeBinaryToWriter(message: RequestReceived, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RequestReceived;
+    static deserializeBinaryFromReader(message: RequestReceived, reader: jspb.BinaryReader): RequestReceived;
 }
 
-export namespace CommandReceived {
+export namespace RequestReceived {
     export type AsObject = {
         id: string,
-        seq: number,
-        type: string,
-        accepted: boolean,
     }
 }
 
-export class PercentDoneUpdate extends jspb.Message { 
-    getMessage(): string;
-    setMessage(value: string): void;
-
-    getPercentdone(): number;
-    setPercentdone(value: number): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): PercentDoneUpdate.AsObject;
-    static toObject(includeInstance: boolean, msg: PercentDoneUpdate): PercentDoneUpdate.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: PercentDoneUpdate, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): PercentDoneUpdate;
-    static deserializeBinaryFromReader(message: PercentDoneUpdate, reader: jspb.BinaryReader): PercentDoneUpdate;
-}
-
-export namespace PercentDoneUpdate {
-    export type AsObject = {
-        message: string,
-        percentdone: number,
-    }
-}
-
-export class InformationUpdate extends jspb.Message { 
-    getMessage(): string;
-    setMessage(value: string): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): InformationUpdate.AsObject;
-    static toObject(includeInstance: boolean, msg: InformationUpdate): InformationUpdate.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: InformationUpdate, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): InformationUpdate;
-    static deserializeBinaryFromReader(message: InformationUpdate, reader: jspb.BinaryReader): InformationUpdate;
-}
-
-export namespace InformationUpdate {
-    export type AsObject = {
-        message: string,
-    }
-}
-
-export class RetryableErrorUpdate extends jspb.Message { 
-    getMessage(): string;
-    setMessage(value: string): void;
-
-    getRetryin(): number;
-    setRetryin(value: number): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RetryableErrorUpdate.AsObject;
-    static toObject(includeInstance: boolean, msg: RetryableErrorUpdate): RetryableErrorUpdate.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RetryableErrorUpdate, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RetryableErrorUpdate;
-    static deserializeBinaryFromReader(message: RetryableErrorUpdate, reader: jspb.BinaryReader): RetryableErrorUpdate;
-}
-
-export namespace RetryableErrorUpdate {
-    export type AsObject = {
-        message: string,
-        retryin: number,
-    }
-}
-
-export class UpdatePaintArtworkTask extends jspb.Message { 
+export class ArtworkTaskProgressEvent extends jspb.Message { 
     getId(): string;
     setId(value: string): void;
 
-    getSeq(): number;
-    setSeq(value: number): void;
+    getTaskstate(): TaskStateType;
+    setTaskstate(value: TaskStateType): void;
 
-    getUpdatetype(): UpdateType;
-    setUpdatetype(value: UpdateType): void;
+    getPercentpainted(): number;
+    setPercentpainted(value: number): void;
 
+    getMessage(): string;
+    setMessage(value: string): void;
 
-    hasPercentdonebody(): boolean;
-    clearPercentdonebody(): void;
-    getPercentdonebody(): PercentDoneUpdate | undefined;
-    setPercentdonebody(value?: PercentDoneUpdate): void;
-
-
-    hasInformationbody(): boolean;
-    clearInformationbody(): void;
-    getInformationbody(): InformationUpdate | undefined;
-    setInformationbody(value?: InformationUpdate): void;
-
-
-    hasRetryerrorbody(): boolean;
-    clearRetryerrorbody(): void;
-    getRetryerrorbody(): RetryableErrorUpdate | undefined;
-    setRetryerrorbody(value?: RetryableErrorUpdate): void;
-
-
-    getUpdateBodyCase(): UpdatePaintArtworkTask.UpdateBodyCase;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): UpdatePaintArtworkTask.AsObject;
-    static toObject(includeInstance: boolean, msg: UpdatePaintArtworkTask): UpdatePaintArtworkTask.AsObject;
+    toObject(includeInstance?: boolean): ArtworkTaskProgressEvent.AsObject;
+    static toObject(includeInstance: boolean, msg: ArtworkTaskProgressEvent): ArtworkTaskProgressEvent.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: UpdatePaintArtworkTask, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): UpdatePaintArtworkTask;
-    static deserializeBinaryFromReader(message: UpdatePaintArtworkTask, reader: jspb.BinaryReader): UpdatePaintArtworkTask;
+    static serializeBinaryToWriter(message: ArtworkTaskProgressEvent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ArtworkTaskProgressEvent;
+    static deserializeBinaryFromReader(message: ArtworkTaskProgressEvent, reader: jspb.BinaryReader): ArtworkTaskProgressEvent;
 }
 
-export namespace UpdatePaintArtworkTask {
+export namespace ArtworkTaskProgressEvent {
     export type AsObject = {
         id: string,
-        seq: number,
-        updatetype: UpdateType,
-        percentdonebody?: PercentDoneUpdate.AsObject,
-        informationbody?: InformationUpdate.AsObject,
-        retryerrorbody?: RetryableErrorUpdate.AsObject,
+        taskstate: TaskStateType,
+        percentpainted: number,
+        message: string,
     }
-
-    export enum UpdateBodyCase {
-        UPDATEBODY_NOT_SET = 0,
-    
-    PERCENTDONEBODY = 13,
-
-    INFORMATIONBODY = 14,
-
-    RETRYERRORBODY = 15,
-
-    }
-
 }
 
-export enum UpdateType {
+export enum TaskStateType {
     IN_PAINT_QUEUE = 0,
     IN_UPLOAD_QUEUE = 1,
     PAINT_PROGRESS = 2,
     UPLOADING = 3,
-    PAUSED = 4,
-    SOFT_ERROR = 5,
-    FATAL_ERROR = 6,
+    ERROR = 6,
     FINISHED = 7,
     CANCELLED = 8,
     DROPPED = 9,
