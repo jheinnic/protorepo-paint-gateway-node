@@ -1,5 +1,5 @@
 {
-  "name": "@jchgrpc/paint-gateway-node",
+  "name": "@jchgrpc/paint.gateway-node",
   "version": "0.0.4",
   "description": "GRPC Service Stubs on Backend NodeJS for Paint Gateway microservice",
   "main": "./lib/proto_grpc_pb.js",
